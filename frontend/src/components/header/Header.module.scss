@@ -1,14 +1,19 @@
 * {
   margin: 0;
+  padding: 0;
 }
 header {
+  a {
+    text-decoration: none;
+  }
   width: 100%;
-  background-color: darkblue;
+  background-color: #abd699;
   color: #fff;
+  font-family: "Jua", sans-serif;
 
   .header {
     width: 100%;
-    height: 8rem;
+    height: 5rem;
     max-width: 1400px;
     margin: 0 auto;
     padding: 1rem;
@@ -19,7 +24,7 @@ header {
   }
 
   .logo a h2 {
-    width: 25%;
+    width: 15%;
     color: #fff;
     cursor: pointer;
     span {
@@ -28,7 +33,7 @@ header {
   }
 
   nav {
-    width: 75%;
+    width: 85%;
     display: flex;
     justify-content: space-between;
     ul {
@@ -36,7 +41,7 @@ header {
       justify-content: space-between;
       list-style: none;
 
-      .logo-mobile {
+      .logo_mobile {
         display: none;
       }
 
@@ -52,7 +57,7 @@ header {
     }
   }
 
-  .header-right {
+  .header_right {
     display: flex;
 
     .cart a {
@@ -93,7 +98,7 @@ header {
     }
   }
 
-  .menu-icon {
+  .menu_icon {
     cursor: pointer;
     display: none;
   }
@@ -104,9 +109,9 @@ header {
       position: absolute;
       top: 0;
       left: 0;
-      width: 50%;
+      width: 30%;
       height: 100vh;
-      background-color: darkblue;
+      background-color: #abd699;
       padding: 1rem;
       z-index: 999;
       transform: translateX(-50%);
@@ -116,7 +121,7 @@ header {
         position: absolute;
         top: 0;
         right: 0;
-        width: 100%;
+        width: 190%;
         height: 100vh;
         background-color: rgba(0, 0, 0, 0.5);
         transform: translateX();
@@ -129,7 +134,7 @@ header {
 
       ul {
         display: block;
-        .logo-mobile {
+        .logo_mobile {
           display: flex;
           justify-content: space-between;
           align-items: center;
@@ -139,18 +144,17 @@ header {
         }
         li {
           padding: 5px 0 15px;
-
-          border-bottom: 1px solid #333;
+          border-bottom: 1px solid #fff;
           a {
             display: block;
           }
         }
       }
 
-      .header-right {
+      .header_right {
         display: block;
         .cart {
-          border-bottom: 1px solid #333;
+          border-bottom: 1px solid #fff;
         }
 
         .links {
@@ -158,8 +162,8 @@ header {
           a {
             display: block;
             margin: 0;
-            padding: 5px 0;
-            border-bottom: 1px solid #333;
+            padding: 5px 0 15px;
+            border-bottom: 1px solid #fff;
           }
         }
       }
@@ -183,16 +187,31 @@ header {
         }
       }
     }
-    .show-nav {
+    .show_nav {
       transform: translateX(0);
     }
-    .hide-nav {
+    .hide_nav {
       transform: translateX(-200%);
     }
-    .menu-icon {
+    .menu_icon {
       display: flex;
       padding-right: 5%;
       margin-right: 1rem;
     }
   }
+}
+
+.active {
+  position: relative;
+  color: darkorange;
+}
+
+.active::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -3px;
+  width: 100%;
+  height: 2px;
+  background-color: #fff;
 }

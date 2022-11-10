@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import styles from "./Header.module.scss";
 import { FaShoppingCart, FaTimes } from "react-icons/fa";
 import { HiOutlineMenuAlt3 } from "react-icons/hi";
@@ -23,6 +23,8 @@ const cart = (
   </span>
 );
 
+const activeLink = ({ isActive }) => (isActive ? `${styles.active}` : "");
+
 function Header() {
   const [showMenu, setShowMenu] = useState(false);
 
@@ -39,43 +41,49 @@ function Header() {
       <div className={styles.header}>
         {logo}
 
-        <nav
-          className={
-            showMenu ? `${styles["show-nav"]}` : `${styles["hide-nav"]}`
-          }
-        >
+        <nav className={showMenu ? `${styles.show_nav}` : `${styles.hide_nav}`}>
           <div
             className={
               showMenu
                 ? `${styles.nav_wrapper} , ${styles.show_nav_wrapper}`
-                : `${styles["nav-wrapper"]}`
+                : `${styles.nav_wrapper}`
             }
             onClick={hideMenu}
           ></div>
 
           <ul onClick={hideMenu}>
-            <li className={styles["logo-mobile"]}>
+            <li className={styles.logo_mobile}>
               {logo}
               <FaTimes size={22} color="#fff" onClick={hideMenu} />
             </li>
             <li>
-              <Link to="/">Home</Link>
+              <NavLink className={activeLink} to="/">
+                Home
+              </NavLink>
             </li>
             <li>
-              <Link to="/contact">Contact Us</Link>
+              <NavLink className={activeLink} to="/contact">
+                Contact Us
+              </NavLink>
             </li>
           </ul>
-          <div className={styles["header-right"]} onClick={hideMenu}>
+          <div className={styles.header_right} onClick={hideMenu}>
             <span className={styles.links}>
-              <Link to="/login">Login</Link>
-              <Link to="/register">Register</Link>
-              <Link to="/order-history">My Orders</Link>
+              <NavLink className={activeLink} to="/login">
+                Login
+              </NavLink>
+              <NavLink className={activeLink} to="/register">
+                Register
+              </NavLink>
+              <NavLink className={activeLink} to="/order-history">
+                My Orders
+              </NavLink>
             </span>
             {cart}
           </div>
         </nav>
 
-        <div className={styles["menu-icon"]}>
+        <div className={styles.menu_icon}>
           {cart}
           <HiOutlineMenuAlt3 size={28} onClick={toggleMenu} />
         </div>
