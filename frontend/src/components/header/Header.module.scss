@@ -7,14 +7,14 @@ header {
     text-decoration: none;
   }
   width: 100%;
-  background-color: #abd699;
+  background-color: #4ad395;
   color: #fff;
   font-family: "Jua", sans-serif;
-
+  // font-family: "Noto Sans KR", sans-serif;
   .header {
     width: 100%;
-    height: 5rem;
-    max-width: 1400px;
+    height: 2rem;
+    max-width: 1000px;
     margin: 0 auto;
     padding: 1rem;
     display: flex;
@@ -40,7 +40,6 @@ header {
       display: flex;
       justify-content: space-between;
       list-style: none;
-
       .logo_mobile {
         display: none;
       }
@@ -72,8 +71,8 @@ header {
       }
       p {
         position: absolute;
-        top: -1rem;
-        right: -1rem;
+        top: -0.5rem;
+        right: -0.8rem;
         font-weight: 500;
       }
     }
@@ -111,7 +110,7 @@ header {
       left: 0;
       width: 30%;
       height: 100vh;
-      background-color: #abd699;
+      background-color: #4ad395;
       padding: 1rem;
       z-index: 999;
       transform: translateX(-50%);
@@ -144,7 +143,7 @@ header {
         }
         li {
           padding: 5px 0 15px;
-          border-bottom: 1px solid #fff;
+          // border-bottom: 1px solid #fff;
           a {
             display: block;
           }
@@ -153,16 +152,16 @@ header {
 
       .header_right {
         display: block;
-        .cart {
-          border-bottom: 1px solid #fff;
-        }
+        // .cart {
+        //   // border-bottom: 1px solid #fff;
+        // }
 
         .links {
           display: block;
           a {
             display: block;
             margin: 0;
-            padding: 5px 0 15px;
+            padding: 5 0;
             border-bottom: 1px solid #fff;
           }
         }
@@ -210,8 +209,10 @@ header {
   content: "";
   position: absolute;
   left: 0;
-  bottom: -3px;
+  bottom: -2px;
   width: 100%;
   height: 2px;
   background-color: #fff;
 }
+
+// Dropdown Menu

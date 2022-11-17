@@ -1,0 +1,235 @@
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap");
+
+$color: #4ad395;
+$color-dark: #23004d;
+$color-light: #a49eac;
+$color-lighten: #f2f2f2;
+$color-hover: #65bf97;
+$font: "Open Sans", sans-serif;
+$big-font-size: 1.5rem;
+$normal-font-size: 0.938rem;
+$small-font-size: 0.813rem;
+
+@media screen and (min-width: 768px) {
+  $normal-font-size: 1rem;
+  $small-font-size: 0.875rem;
+}
+
+h1 {
+  color: $color-dark;
+  margin: 0;
+}
+a {
+  text-decoration: none;
+}
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+.login {
+  margin: 0;
+  padding: 0;
+  font-family: $font;
+  font-size: $normal-font-size;
+  display: grid;
+  grid-template-columns: 100%;
+  height: 92vh;
+  margin-left: 1.5rem;
+  margin-right: 1.5rem;
+
+  &_content {
+    display: grid;
+  }
+  &_img {
+    justify-self: center;
+
+    img {
+      width: 25rem;
+      margin-top: 1.5rem;
+    }
+  }
+  &_reset {
+    justify-self: center;
+    height: 0.5rem;
+    img {
+      width: 25rem;
+      margin-top: 1.5rem;
+    }
+  }
+  &_forms {
+    position: relative;
+    height: 368px;
+  }
+  &_register,
+  &_create {
+    position: absolute;
+    bottom: 1rem;
+    width: 100%;
+    background-color: $color-lighten;
+    padding: 2rem 1rem;
+    border-radius: 1rem;
+    text-align: center;
+    box-shadow: 0 8px 20px rgba(35, 0, 77, 0.2);
+    animation-duration: 0.4s;
+    animation-name: animateLogin;
+  }
+  &_title {
+    font-size: $big-font-size;
+    margin-bottom: 2rem;
+  }
+  &_box {
+    display: grid;
+    grid-template-columns: max-content 1fr;
+    column-gap: 0.5rem;
+    padding: 1.125rem 1rem;
+    background-color: #fff;
+    margin-top: 1rem;
+    border-radius: 0.5rem;
+  }
+  &__icon {
+    font-size: 2rem;
+    color: $color;
+  }
+  &_input {
+    border: none;
+    outline: none;
+    font-size: $normal-font-size;
+    font-weight: 700;
+    color: $color-dark;
+    width: 100%;
+
+    &::placeholder {
+      font-size: $normal-font-size;
+      font-family: $font;
+      color: $color-light;
+    }
+  }
+  &_forgot {
+    display: flex;
+    justify-content: center;
+    margin-top: 1rem;
+    font-size: $small-font-size;
+    font-weight: 600;
+    color: $color-light;
+  }
+  &_button {
+    width: 100%;
+    display: block;
+    padding: 1rem;
+    margin: 2rem 0;
+    background-color: $color;
+    color: #fff;
+    font-weight: 600;
+    text-align: center;
+    border-radius: 0.5rem;
+    transition: 0.3s;
+    cursor: pointer;
+    &:hover {
+      background-color: $color-hover;
+    }
+  }
+
+  &_account,
+  &_signin,
+  &_signup {
+    font-weight: 600;
+    font-size: $small-font-size;
+
+    &__account {
+      color: $color-dark;
+    }
+    &__reset a {
+      padding: 10px;
+      color: $color;
+    }
+    &__signin,
+    &__signup {
+      color: $color;
+      cursor: pointer;
+    }
+  }
+  &_social {
+    margin-top: 1rem;
+
+    &__icon {
+      font-size: 2.5rem;
+      color: $color-dark;
+      margin: 0 1rem;
+    }
+  }
+}
+.block {
+  display: block;
+}
+.none {
+  display: none;
+}
+@keyframes animateLogin {
+  0% {
+    transform: scale(1, 1);
+  }
+  50% {
+    transform: scale(1.1, 1.1);
+  }
+  100% {
+    transform: scale(1, 1);
+  }
+}
+
+@media screen and (min-width: 576px) {
+  .login {
+    &_forms {
+      width: 348px;
+      justify-self: center;
+    }
+  }
+}
+@media screen and (min-width: 1024px) {
+  .login {
+    height: 91.5vh;
+    overflow: hidden;
+    &_content {
+      grid-template-columns: repeat(2, max-content);
+      justify-content: center;
+      align-items: center;
+      margin-left: 10rem;
+    }
+    &_img {
+      display: flex;
+      width: 600px;
+      height: 588px;
+      background-color: #fff;
+      border-radius: 1rem;
+      padding-left: 1rem;
+
+      img {
+        width: 80%;
+        margin-top: 0;
+      }
+    }
+    &_reset {
+      display: flex;
+      width: 550px;
+      height: 450px;
+      background-color: #fff;
+      border-radius: 1rem;
+      padding-left: 1rem;
+      img {
+        width: 80%;
+        margin-top: 0;
+      }
+    }
+    &_register,
+    &_create {
+      left: -11rem;
+    }
+    &_register {
+      bottom: -2rem;
+    }
+    &_create {
+      bottom: -5.5rem;
+    }
+  }
+}
