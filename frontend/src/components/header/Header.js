@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link, NavLink, useNavigate } from "react-router-dom";
 
 //scss
@@ -7,15 +7,18 @@ import styles from "./Header.module.scss";
 //icons
 import { FaShoppingCart, FaTimes } from "react-icons/fa";
 import { HiOutlineMenuAlt3 } from "react-icons/hi";
-import { MdLogout, MdLogin } from "react-icons/md";
-import { FiUserPlus } from "react-icons/fi";
+import { FiUserPlus, FiUser } from "react-icons/fi";
 
 //firebase
-import { signOut } from "firebase/auth";
+import { signOut, onAuthStateChanged } from "firebase/auth";
 import { auth } from "../../firebase/config";
 
 import Search from "./Search";
 import { toast, ToastContainer } from "react-toastify";
+
+//redux
+import { useDispatch } from "react-redux";
+import { Set_ACTIVE_USER } from "../../redux/slice/authSlice";
 
 const logo = (
   <div className={styles.logo}>
@@ -40,7 +43,9 @@ const activeLink = ({ isActive }) => (isActive ? `${styles.active}` : "");
 
 function Header() {
   const [showMenu, setShowMenu] = useState(false);
+  const [showName, setShowName] = useState("");
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const toggleMenu = () => {
     setShowMenu(!showMenu);
@@ -50,6 +55,25 @@ function Header() {
     setShowMenu(false);
   };
 
+  useEffect(() => {
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        const uid = user.uid;
+        setShowName(user.displayName);
+
+        dispatch(
+          Set_ACTIVE_USER({
+            email: user.email,
+            userName: user.displayName,
+            userId: user.uid,
+          })
+        );
+      } else {
+        setShowName("");
+      }
+    });
+  }, []);
+
   const logoutUser = () => {
     signOut(auth)
       .then(() => {
@@ -58,7 +82,6 @@ function Header() {
       })
       .catch((error) => {
         toast.success(error.message);
-        // An error happened.
       });
   };
 
@@ -93,18 +116,25 @@ function Header() {
                     Home
                   </NavLink>
                 </li>
-                <li>
+                {/* <li>
                   <NavLink className={activeLink} to="/contact">
                     Contact Us
                   </NavLink>
+                </li> */}
+                <li>
+                  {showName ? (
+                    <NavLink onClick={logoutUser}>Logout</NavLink>
+                  ) : (
+                    <NavLink className={activeLink} to="/login">
+                      Login
+                    </NavLink>
+                  )}
                 </li>
                 <li>
-                  <NavLink className={activeLink} to="/login">
-                    Login
+                  <NavLink to="/">
+                    <FiUser />
+                    {showName}
                   </NavLink>
-                </li>
-                <li>
-                  <NavLink onClick={logoutUser}>logout</NavLink>
                 </li>
                 <li>
                   <NavLink className={activeLink} to="/register">
